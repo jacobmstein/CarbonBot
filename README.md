@@ -1,6 +1,6 @@
 # Carbon Bot
 
-Carbon Bot is a Discord bot to interact with [Carbon](https://carbon.now.sh), inspired by
+A Discord bot to format code with [Carbon](https://carbon.now.sh), inspired by
 [Carbonara](https://github.com/petersolopov/carbonara).
 
 Invite Carbon Bot to your guild [here](https://discord.com/api/oauth2/authorize?client_id=892151455329427527&permissions=0&scope=applications.commands%20bot
