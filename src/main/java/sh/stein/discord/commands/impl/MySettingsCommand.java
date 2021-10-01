@@ -29,6 +29,7 @@ public class MySettingsCommand extends BaseSlashCommand {
             userSettings = settings.getAllUserCarbonSettings(snowflake);
         } catch (Exception ex) {
             sendErrorEmbed(event, "Please try again later.", true);
+            ex.printStackTrace();
             return;
         }
 

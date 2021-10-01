@@ -25,6 +25,7 @@ public class UnsetCommand extends BaseSlashCommand {
             sendErrorEmbed(event, "Illegal argument, see `/help` for more informtation.", true);
         } catch (Exception ex) {
             sendErrorEmbed(event, "Please try again later.", true);
+            ex.printStackTrace();
         }
     }
 }

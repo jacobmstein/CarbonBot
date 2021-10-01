@@ -101,6 +101,7 @@ public class CarbonCommand extends BaseSlashCommand {
         try {
             userSettings = settings.getAllUserCarbonSettings(snowflake);
         } catch (Exception ex) { // settings could not be retrieved
+            ex.printStackTrace();
             return optionsBuilder;
         }
 

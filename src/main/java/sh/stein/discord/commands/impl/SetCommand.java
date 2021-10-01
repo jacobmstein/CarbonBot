@@ -26,6 +26,7 @@ public class SetCommand extends BaseSlashCommand {
             sendErrorEmbed(event, "Illegal argument, see `/help` for more information.", true);
         } catch (Exception ex) {
             sendErrorEmbed(event, "Please try again later.", true);
+            ex.printStackTrace();
         }
     }
 }
