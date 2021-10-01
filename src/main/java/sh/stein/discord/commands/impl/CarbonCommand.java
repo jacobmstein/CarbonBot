@@ -68,7 +68,7 @@ public class CarbonCommand extends BaseSlashCommand {
             return;
         }
 
-        event.deferReply(true).queue();
+        event.deferReply().queue();
 
         event.getChannel()
                 .retrieveMessageById(snowflake.getAsLong())
