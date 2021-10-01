@@ -138,7 +138,18 @@ Restores a setting to default
 
 ## Dependencies
 
-User settings are persisted in Redis.
+Carbon Bot is written in Java 16 and has the following dependencies.
+
+* JDA
+    * [GitHub](https://github.com/DV8FromTheWorld/JDA)
+* Playwright
+    * [GitHub](https://github.com/microsoft/playwright-java)
+    * Playwright requires various dependencies to install browsers, see [the docs](https://playwright.dev/java/docs/cli#install-system-dependencies).
+* Jedis
+    * [GitHub](https://github.com/redis/jedis)
+    * User settings are persisted in Redis.
+* slf4j
+    * [GitHub](https://github.com/qos-ch/slf4j)
 
 ## Configuration
 
