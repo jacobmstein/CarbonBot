@@ -47,6 +47,8 @@ The following commands are currently available.
 
 Creates an image of the message's contents using the user's stored settings, if any.
 
+First, Carbon Bot tries to find a code block (delimited by three back ticks, \`\`\`) in the message's contents, as well as the code block's language (specified after the opening back ticks, e.g. \`\`\`java) for syntax hilighting, in which case an image is created with the code block's content. If a code block could not be found, then the message's contents are stripped of any surrounding back ticks and used.
+
 #### Arguments
 
 | Argument Name | Description               | Required |
