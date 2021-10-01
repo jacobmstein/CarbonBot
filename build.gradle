@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+mainClassName = "sh.stein.discord.Main"
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+}
+
+dependencies {
+    implementation 'net.dv8tion:JDA:4.3.0_331'
+    implementation 'com.microsoft.playwright:playwright:1.14.1'
+    implementation 'redis.clients:jedis:3.7.0-RC1'
+    implementation 'org.slf4j:slf4j-api:2.0.0-alpha4'
+    implementation 'org.slf4j:slf4j-simple:2.0.0-alpha4'
+}
