@@ -6,7 +6,7 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-mainClassName = "sh.stein.discord.Main"
+mainClassName = 'sh.stein.discord.Main'
 
 repositories {
     mavenCentral()
