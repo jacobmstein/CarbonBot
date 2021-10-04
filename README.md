@@ -3,7 +3,8 @@
 A Discord bot to create images of code with [Carbon](https://carbon.now.sh), inspired by
 [Carbonara](https://github.com/petersolopov/carbonara).
 
-Invite Carbon Bot to your guild [here](https://discord.com/api/oauth2/authorize?client_id=892151455329427527&permissions=0&scope=applications.commands%20bot
+Invite Carbon Bot to your
+guild [here](https://discord.com/api/oauth2/authorize?client_id=892151455329427527&permissions=0&scope=applications.commands%20bot
 ).
 
 ![](example.png)
@@ -47,7 +48,11 @@ The following commands are currently available.
 
 Creates an image of the message's contents using the user's stored settings, if any.
 
-First, Carbon Bot tries to find a code block (delimited by three back ticks, \`\`\`) in the message's contents, as well as the code block's language (specified after the opening back ticks, e.g. \`\`\`java) for syntax hilighting, in which case an image is created with the code block's content. If a code block could not be found, then the message's contents are stripped of any surrounding back ticks and used.
+First, Carbon Bot tries to find a code block (delimited by three back ticks, \`\`\`) in the
+message's contents, as well as the code block's language (specified after the opening back ticks,
+e.g. \`\`\`java) for syntax hilighting, in which case an image is created with the code block's
+content. If a code block could not be found, then the message's contents are stripped of any
+surrounding back ticks and used.
 
 #### Arguments
 
@@ -60,6 +65,7 @@ First, Carbon Bot tries to find a code block (delimited by three back ticks, \`\
 `/carbon <message_id>`
 
 ---
+
 ### Help
 
 Displays the help menu for all commands
@@ -81,14 +87,17 @@ Displays the help menu for all commands
 `/help`, `/help set`
 
 ---
+
 ### Invite
 
 Displays buttons to invite Carbon Bot
+
 #### Syntax
 
 `/invite`
 
 ---
+
 ### My Settings
 
 Displays your settings
@@ -98,6 +107,7 @@ Displays your settings
 `/mysettings`
 
 ---
+
 ### Set
 
 Changes a default setting. View all changable settings by using `/help set`.
@@ -118,6 +128,7 @@ Changes a default setting. View all changable settings by using `/help set`.
 `/set font-family Monoid`, `/set theme Hopscotch`, `/set window-style outlined`
 
 ---
+
 ### Unset
 
 Restores a setting to default
@@ -144,7 +155,8 @@ Carbon Bot is written in Java 16 and has the following dependencies.
     * [GitHub](https://github.com/DV8FromTheWorld/JDA)
 * Playwright
     * [GitHub](https://github.com/microsoft/playwright-java)
-    * Playwright requires various dependencies to install browsers, see [the docs](https://playwright.dev/java/docs/cli#install-system-dependencies).
+    * Playwright requires various dependencies to install browsers,
+      see [the docs](https://playwright.dev/java/docs/cli#install-system-dependencies).
 * Jedis
     * [GitHub](https://github.com/redis/jedis)
     * User settings are persisted in Redis.
@@ -154,6 +166,7 @@ Carbon Bot is written in Java 16 and has the following dependencies.
 ## Configuration
 
 The `config.properties` file requires the following three properties.
+
 ```properties
 discord.bot.token=bot token
 discord.invite.uri=invite url
@@ -162,4 +175,6 @@ redis.uri=redis://localhost:6379
 
 ## Style
 
-The IntelliJ code style files, which are a fork of the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html), are stored in the `.idea/codeStyles` directory.
+The IntelliJ code style files, which are a fork of
+the [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html), are stored in
+the `.idea/codeStyles` directory.

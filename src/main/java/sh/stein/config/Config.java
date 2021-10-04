@@ -13,18 +13,6 @@ public class Config {
     private Config() {
     }
 
-    public String getDiscordBotToken() {
-        return discordBotToken;
-    }
-
-    public String getDiscordInviteURI() {
-        return discordInviteURI;
-    }
-
-    public String getRedisURI() {
-        return redisURI;
-    }
-
     public static Config fromFile(String name) throws IOException {
         Properties properties = new Properties();
 
@@ -38,5 +26,17 @@ public class Config {
 
             return config;
         }
+    }
+
+    public String getDiscordBotToken() {
+        return discordBotToken;
+    }
+
+    public String getDiscordInviteURI() {
+        return discordInviteURI;
+    }
+
+    public String getRedisURI() {
+        return redisURI;
     }
 }
