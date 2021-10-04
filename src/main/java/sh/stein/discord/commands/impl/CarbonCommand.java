@@ -48,6 +48,30 @@ public class CarbonCommand extends BaseSlashCommand {
         this.settings = settings;
     }
 
+    private static WindowTheme getWindowThemeFromString(String themeString) {
+        try {
+            return WindowTheme.valueOf(themeString);
+        } catch (IllegalArgumentException ex) {
+        }
+
+        WindowTheme theme;
+        switch (themeString.toLowerCase()) {
+            case "sharp":
+                theme = WindowTheme.SharpEdges;
+                break;
+            case "bw":
+            case "outlined":
+                theme = WindowTheme.Outlined;
+                break;
+            case "none":
+            case "rounded":
+            default:
+                theme = WindowTheme.RoundedEdges;
+        }
+
+        return theme;
+    }
+
     @Override
     public void execute(SlashCommandEvent event) {
         String key = event.getOption("message_id").getAsString();
@@ -118,30 +142,6 @@ public class CarbonCommand extends BaseSlashCommand {
         }
 
         return optionsBuilder;
-    }
-
-    private static WindowTheme getWindowThemeFromString(String themeString) {
-        try {
-            return WindowTheme.valueOf(themeString);
-        } catch (IllegalArgumentException ex) {
-        }
-
-        WindowTheme theme;
-        switch (themeString.toLowerCase()) {
-            case "sharp":
-                theme = WindowTheme.SharpEdges;
-                break;
-            case "bw":
-            case "outlined":
-                theme = WindowTheme.Outlined;
-                break;
-            case "none":
-            case "rounded":
-            default:
-                theme = WindowTheme.RoundedEdges;
-        }
-
-        return theme;
     }
 
     @FunctionalInterface

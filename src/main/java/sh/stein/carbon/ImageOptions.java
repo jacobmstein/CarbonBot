@@ -104,6 +104,28 @@ public class ImageOptions {
     }
 
     /**
+     * Represents one of the three window styles supported by Carbon.
+     */
+    public enum WindowTheme {
+        RoundedEdges,
+        SharpEdges,
+        Outlined
+    }
+
+    /**
+     * The languages currently supported by Carbon.
+     */
+    public enum Language {
+        Auto, Apache, Bash, C, CPlusPlus, CSharp, Clojure, COBOL, CoffeeScript, Crystal, CSS, D,
+        Dart, Diff, Django, Docker, Elixir, Elm, Erlang, Fortran, Gherkin, GraphQL, Go, Groovy,
+        Handlebars, Haskell, HTMLXML, Java, JavaScript, JSON, JSX, Julia, Kotlin, LaTeX, Lisp, Lua,
+        Markdown, Mathematica, MATLABOctave, MySQL, NTriples, NGINX, Nim, ObjectiveC, OCamlFSharp,
+        Pascal, Perl, PHP, PlainText, PowerShell, Python, R, RISCV, Ruby, Rust, Sass, Scala,
+        Smalltalk, Solidity, SPARQL, SQL, Stylus, Swift, TCL, TOML, Turtle, TypeScript, TSX, Twig,
+        VBDOTNET, Verilog, VHDL, Vue, XQuery, YAML
+    }
+
+    /**
      * Used to build an instance of {@code ImageOptions} fluently.
      */
     public static class ImageOptionsBuilder {
@@ -203,27 +225,5 @@ public class ImageOptions {
         public ImageOptions build() {
             return options;
         }
-    }
-
-    /**
-     * Represents one of the three window styles supported by Carbon.
-     */
-    public enum WindowTheme {
-        RoundedEdges,
-        SharpEdges,
-        Outlined
-    }
-
-    /**
-     * The languages currently supported by Carbon.
-     */
-    public enum Language {
-        Auto, Apache, Bash, C, CPlusPlus, CSharp, Clojure, COBOL, CoffeeScript, Crystal, CSS, D,
-        Dart, Diff, Django, Docker, Elixir, Elm, Erlang, Fortran, Gherkin, GraphQL, Go, Groovy,
-        Handlebars, Haskell, HTMLXML, Java, JavaScript, JSON, JSX, Julia, Kotlin, LaTeX, Lisp, Lua,
-        Markdown, Mathematica, MATLABOctave, MySQL, NTriples, NGINX, Nim, ObjectiveC, OCamlFSharp,
-        Pascal, Perl, PHP, PlainText, PowerShell, Python, R, RISCV, Ruby, Rust, Sass, Scala,
-        Smalltalk, Solidity, SPARQL, SQL, Stylus, Swift, TCL, TOML, Turtle, TypeScript, TSX, Twig,
-        VBDOTNET, Verilog, VHDL, Vue, XQuery, YAML
     }
 }
