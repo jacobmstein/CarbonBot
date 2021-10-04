@@ -4,9 +4,10 @@ import static sh.stein.carbon.ImageOptions.Language;
 import static sh.stein.carbon.ImageOptions.WindowTheme;
 
 import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Page.ScreenshotOptions;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.options.BoundingBox;
 import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -146,12 +147,15 @@ public class PlaywrightCarbonService implements CarbonService {
                     new Browser.NewPageOptions().setDeviceScaleFactor(scaleFactor));
             page.navigate(getURI(code, options));
 
-            // enable transparency, important if the background-color is transparent
-            ElementHandle.ScreenshotOptions screenshotOptions = new ElementHandle
-                    .ScreenshotOptions()
+            // the element screenshot method in playwright also captures the background for whatever
+            // reason, so manually capture the element
+            BoundingBox box = page.querySelector(IMAGE_SELECTOR).boundingBox();
+
+            ScreenshotOptions screenshotOptions = new ScreenshotOptions()
+                    .setClip(box.x, box.y, box.width, box.height)
                     .setOmitBackground(true);
 
-            return page.querySelector(IMAGE_SELECTOR).screenshot(screenshotOptions);
+            return page.screenshot(screenshotOptions);
         }
     }
 
