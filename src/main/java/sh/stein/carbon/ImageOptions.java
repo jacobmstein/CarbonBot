@@ -5,7 +5,6 @@ package sh.stein.carbon;
  */
 public class ImageOptions {
 
-    private String code;
     private Language language = Language.Auto;
     private String backgroundColor = "rgba(171, 184, 195, 1)";
     private boolean dropShadow = true;
@@ -28,8 +27,8 @@ public class ImageOptions {
     private ImageOptions() {
     }
 
-    public String getCode() {
-        return code;
+    public static ImageOptions getDefault() {
+        return new ImageOptions();
     }
 
     public Language getLanguage() {
@@ -110,11 +109,6 @@ public class ImageOptions {
     public static class ImageOptionsBuilder {
 
         private final ImageOptions options = new ImageOptions();
-
-        public ImageOptionsBuilder code(String code) {
-            options.code = code;
-            return this;
-        }
 
         public ImageOptionsBuilder language(Language language) {
             options.language = language;

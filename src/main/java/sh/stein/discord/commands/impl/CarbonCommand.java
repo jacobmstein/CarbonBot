@@ -5,12 +5,14 @@ import static sh.stein.carbon.ImageOptions.WindowTheme;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.OptionalLong;
 import java.util.function.BiConsumer;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
 import sh.stein.carbon.CarbonService;
 import sh.stein.discord.commands.BaseSlashCommand;
+import sh.stein.discord.text.CodeBlock;
 import sh.stein.discord.text.Parser;
 import sh.stein.settings.CarbonSetting;
 import sh.stein.settings.SettingsService;
@@ -79,14 +81,19 @@ public class CarbonCommand extends BaseSlashCommand {
     private void onMessageFound(Message message, SlashCommandEvent event) {
         ImageOptionsBuilder optionsBuilder = getUserOptionsBuilder(event.getUser().getIdLong());
 
-        parser.getCodeBlock(message.getContentRaw()).ifPresentOrElse(codeBlock -> {
-            optionsBuilder.code(codeBlock.getCode());
+        String code;
+        Optional<CodeBlock> codeBlockOptional = parser.getCodeBlock(message.getContentRaw());
+        if (codeBlockOptional.isPresent()) {
+            CodeBlock codeBlock = codeBlockOptional.get();
+            code = codeBlock.getCode();
             optionsBuilder.language(codeBlock.getCarbonLanguage());
-        }, () -> optionsBuilder.code(parser.stripSurroundingBackTicks(message.getContentRaw())));
+        } else {
+            code = parser.stripSurroundingBackTicks(message.getContentRaw());
+        }
 
         byte[] image;
         try {
-            image = carbon.getImage(optionsBuilder.build());
+            image = carbon.getImage(code, optionsBuilder.build());
         } catch (Exception ex) {
             sendErrorEmbed(event, "Failed to reach Carbon. Please try again later.", true);
             return;

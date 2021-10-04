@@ -1,5 +1,8 @@
 package sh.stein.carbon;
 
+import java.io.File;
+import java.io.IOException;
+
 /**
  * A service used to interact with Carbon.
  *
@@ -9,10 +12,38 @@ package sh.stein.carbon;
 public interface CarbonService {
 
     /**
-     * Attempts to get an image using the specified options.
+     * Gets an image using the specified code.
      *
-     * @param options the {@code ImageOptions} instance
+     * @param code code to get an image of
      * @return the image as a byte array
      */
-    byte[] getImage(ImageOptions options);
+    byte[] getImage(String code);
+
+    /**
+     * Gets an image using the specified code and options.
+     *
+     * @param code    code to get an image of
+     * @param options an {@code ImageOptions} instance
+     * @return the image as a byte array
+     */
+    byte[] getImage(String code, ImageOptions options);
+
+    /**
+     * Gets an image using the specified file's contents.
+     *
+     * @param file a {@code File} instance
+     * @return the image as a byte array
+     * @throws IOException
+     */
+    byte[] getImage(File file) throws IOException;
+
+    /**
+     * Gets an image using the specified file's contents and options.
+     *
+     * @param file    a {@code File} instance
+     * @param options an {@code ImageOptions} instance
+     * @return the image as a byte array
+     * @throws IOException
+     */
+    byte[] getImage(File file, ImageOptions options) throws IOException;
 }

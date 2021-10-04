@@ -7,8 +7,13 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import java.io.File;
+import java.io.IOException;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -113,16 +118,33 @@ public class PlaywrightCarbonService implements CarbonService {
     }};
 
     /**
-     * Loads Carbon using Playwright then screenshots the created image.
+     * Loads Carbon using Playwright, then screenshots the image created with the specified code and
+     * default options.
+     *
+     * @param code the code to get an image of
+     * @return the image as a byte array
      */
     @Override
-    public byte[] getImage(ImageOptions options) {
+    public byte[] getImage(String code) {
+        return getImage(code, ImageOptions.getDefault());
+    }
+
+    /**
+     * Loads Carbon using Playwright, then screenshots the image created with the specified code and
+     * options.
+     *
+     * @param code    the code to get an image of
+     * @param options the {@code ImageOptions} instance
+     * @return the image as a byte array
+     */
+    @Override
+    public byte[] getImage(String code, ImageOptions options) {
         try (Playwright playwright = Playwright.create()) {
             Browser browser = playwright.chromium().launch();
             int scaleFactor = options.getScaleFactor();
             Page page = browser.newPage(
                     new Browser.NewPageOptions().setDeviceScaleFactor(scaleFactor));
-            page.navigate(getURI(options));
+            page.navigate(getURI(code, options));
 
             // enable transparency, important if the background-color is transparent
             ElementHandle.ScreenshotOptions screenshotOptions = new ElementHandle
@@ -134,14 +156,43 @@ public class PlaywrightCarbonService implements CarbonService {
     }
 
     /**
+     * Loads Carbon using Playwright, then screenshots the image created with the specified file's
+     * contents and default options.
+     *
+     * @param file the {@code File} instance to read the contents of
+     * @return the image as a byte array
+     * @throws IOException
+     */
+    @Override
+    public byte[] getImage(File file) throws IOException {
+        return getImage(file, ImageOptions.getDefault());
+    }
+
+    /**
+     * Loads Carbon using Playwright, then screenshots the image created with the specified file's
+     * contents and options.
+     *
+     * @param file    the {@code File} instance to read the contents of
+     * @param options the {@code ImageOptions} instance
+     * @return the image as a byte array
+     * @throws IOException
+     */
+    @Override
+    public byte[] getImage(File file, ImageOptions options) throws IOException {
+        Path path = file.toPath();
+        String contents = new String(Files.readAllBytes(path), Charset.defaultCharset());
+        return getImage(contents, options);
+    }
+
+    /**
      * Gets a URI string with the appropriate query string parameters using the specified options.
      *
      * @param options an {@code ImageOptions} instance
      * @return the URI string
      */
-    private String getURI(ImageOptions options) {
+    private String getURI(String code, ImageOptions options) {
         Map<String, String> parameters = new HashMap<>() {{
-            put("code", options.getCode());
+            put("code", code);
             put("bg", options.getBackgroundColor());
             put("ds", Boolean.toString(options.getDropShadow()));
             put("dsblur", options.getDropShadowBlurRadius());
