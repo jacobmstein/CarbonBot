@@ -153,6 +153,7 @@ public class PlaywrightCarbonService implements CarbonService {
 
             ScreenshotOptions screenshotOptions = new ScreenshotOptions()
                     .setClip(box.x, box.y, box.width, box.height)
+                    .setFullPage(true)
                     .setOmitBackground(true);
 
             return page.screenshot(screenshotOptions);
