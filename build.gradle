@@ -22,4 +22,5 @@ dependencies {
     implementation 'redis.clients:jedis:3.7.0-RC1'
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha4'
     implementation 'org.slf4j:slf4j-simple:2.0.0-alpha4'
+    implementation 'sh.stein:carbon-api:1.1'
 }
