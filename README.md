@@ -151,12 +151,10 @@ Restores a setting to default
 
 Carbon Bot is written in Java 16 and has the following dependencies.
 
+* carbon-api
+    * [GitHub](https://github.com/jacobmstein/carbon-api)
 * JDA
     * [GitHub](https://github.com/DV8FromTheWorld/JDA)
-* Playwright
-    * [GitHub](https://github.com/microsoft/playwright-java)
-    * Playwright requires various dependencies to install browsers,
-      see [the docs](https://playwright.dev/java/docs/cli#install-system-dependencies).
 * Jedis
     * [GitHub](https://github.com/redis/jedis)
     * User settings are persisted in Redis.
