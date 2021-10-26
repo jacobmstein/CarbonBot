@@ -14,6 +14,10 @@ repositories {
         name 'm2-dv8tion'
         url 'https://m2.dv8tion.net/releases'
     }
+    maven {
+        name 'staging'
+        url 'https://s01.oss.sonatype.org/content/groups/staging/'
+    }
 }
 
 dependencies {
@@ -21,5 +25,5 @@ dependencies {
     implementation 'redis.clients:jedis:3.7.0-RC1'
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha4'
     implementation 'org.slf4j:slf4j-simple:2.0.0-alpha4'
-    implementation 'sh.stein:carbon-api:1.1'
+    implementation 'sh.stein:carbon-api:1.2'
 }

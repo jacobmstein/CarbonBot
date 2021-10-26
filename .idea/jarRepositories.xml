@@ -21,5 +21,15 @@
       <option name="name" value="m2-dv8tion" />
       <option name="url" value="https://m2.dv8tion.net/releases" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="snapshots" />
+      <option name="url" value="https://s01.oss.sonatype.org/content/repositories/snapshots/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="staging" />
+      <option name="name" value="staging" />
+      <option name="url" value="https://s01.oss.sonatype.org/content/groups/staging/" />
+    </remote-repository>
   </component>
 </project>
